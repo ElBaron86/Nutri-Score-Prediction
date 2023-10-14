@@ -1,5 +1,5 @@
 '''-----------------------------------------------
-Import
+Importation des outils nécessaires 
 -----------------------------------------------'''
 import numpy as np
 import pandas as pd
