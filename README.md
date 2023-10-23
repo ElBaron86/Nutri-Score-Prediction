@@ -1,5 +1,7 @@
 # Modèle de Classement NutriScore pour les Aliments (Projet Académique)
 
+![Logo](Projet_digital\src\data\nutri.jpg)
+
 Ce projet académique réalisé par des étudiants du Master 2 SEP de l'Université de Reims Champagne Ardenne a pour objectif de créer un modèle de classement des aliments en fonction de leur NutriScore en utilisant.
 Le NutriScore est un système d'étiquetage nutritionnel utilisé pour informer les consommateurs sur la qualité nutritionnelle des aliments emballés.
 Ce modèle peut être utilisé pour évaluer la qualité nutritionnelle des produits alimentaires et aider les consommateurs à faire des choix plus sains.
