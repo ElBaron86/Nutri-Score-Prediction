@@ -1,16 +1,5 @@
-Dans cette partie vous trouverez un résumé des feedbacks et des aides pour poursuivre le projet. 
-
-- Documentation sur les différentes méthodes de régression : 
-        > Possibilité d'avoir de la documentation auprés de Amor Keziou, notamment pour la régression logistique multi-groupe ordinale. 
-
-- Documentation sur la liaison entre formulaire & script python : 
-        > Ressources disponlibles sur le cours moodle VBA de Arona Diene. 
-
-
-- Retour Morgan Cousin après la présentation : 
-	> Ajouter slide sur le contexte (source de la bdd, expliquer les variables, etc.)
-	> Slide sur un exemple de produit (montrer l'étiquette et dire quel information on entre dans le formulaire) 
-	> Faire une slide sur les objectifs qui été prévus pour le jour J
-	> Faire une slide sur la maquette du formulaire d'entrée + dashboard de sortie 
-	> Mieux détailler la roadmap (les tâches et mettre les dates précises) 
-	> Structurer les codes python
+tqdm
+pandas
+mplcyberpunk
+scikit-learn
+mord
