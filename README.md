@@ -1,6 +1,6 @@
 # Modèle de classement Nutri-Score pour les aliments (Projet Académique)
 
-![Logo](https://github.com/Alfex-1/Projet_digital/blob/main/data/nutri.jpg)
+![Logo](https://github.com/Alfex-1/Projet_digital/blob/main/docs/nutri.jpg)
 
 Pour rappel, le Nutri-Score est un système d'étiquetage nutritionnel largement adopté à l'échelle nationale, destiné à éclairer les consommateurs sur la qualité nutritionnelle des produits alimentaires transformés. Forts de cet outil, nous avons entrepris un projet académique visant à prédire, au moyen d'un modèle statistique, le Nutri-Score d'un ou de plusieurs produits en fonction de leurs caractéristiques nutritionnelles. Cette initiative a pour vocation d'assister les consommateurs dans leurs choix alimentaires en favorisant des options plus saines et mieux éclairées.
 
