@@ -21,7 +21,7 @@ Notre application fonctionne grâce aux logiciels VBA et Python :
 - Kpadondou Carlos (Data scientist)
 - Jupin Manon (Data governance)
 - Gabet Léo (Front/User Interface)
-- Otogondoua Ememag Jordhy Jean Jaurès (Data Engineer)
+- Jaurès Ememaga (Data Engineer)
 
 
 
