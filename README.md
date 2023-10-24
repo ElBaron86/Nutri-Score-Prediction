@@ -1,10 +1,11 @@
-# Modèle de Classement NutriScore pour les Aliments (Projet Académique)
+# Modèle de classement NutriScore pour les aliments (Projet Académique)
 
 ![Logo](https://github.com/Alfex-1/Projet_digital/blob/main/data/nutri.jpg)
 
-Ce projet académique réalisé par des étudiants du Master 2 SEP de l'Université de Reims Champagne Ardenne a pour objectif de créer un modèle de classement des aliments en fonction de leur NutriScore en utilisant les caractéristiques de ces aliments.
-Le NutriScore est un système d'étiquetage nutritionnel utilisé pour informer les consommateurs sur la qualité nutritionnelle des aliments emballés.
-Ce modèle peut être utilisé pour évaluer la qualité nutritionnelle des produits alimentaires et aider les consommateurs à faire des choix plus sains.
+Pour rappel, le NutriScore est un système d'étiquetage nutritionnel largement adopté à l'échelle nationale, destiné à éclairer les consommateurs sur la qualité nutritionnelle des produits alimentaires transformés. Forts de cet outil, nous avons entrepris un projet académique visant à prédire, au moyen d'un modèle statistique, le NutriScore d'un ou de plusieurs produits en fonction de leurs caractéristiques nutritionnelles. Cette initiative a pour vocation d'assister les consommateurs dans leurs choix alimentaires en favorisant des options plus saines et mieux éclairées.
+
+L'équipe derrière ce projet est constituée d'étudiants du programme de Master 2 en Sciences de l'Économie et de la Prévention (SEP) de l'Université de Reims Champagne Ardenne, promotion 2023/2024. Notre démarche s'inscrit dans le souhait de développer une application à l'attention de toute personne désireuse de bénéficier d'une information claire et rapide sur la qualité nutritionnelle d'un produit alimentaire.
+
 
 # Contributeurs
 
@@ -14,6 +15,9 @@ Ce modèle peut être utilisé pour évaluer la qualité nutritionnelle des prod
 - Jupin Manon (Data governance)
 - Gabet Léo (Front/User Interface)
 - Otogondoua Ememag Jordhy Jean Jaurès (Data Engineer)
+
+
+
 
 ## Prérequis
 
