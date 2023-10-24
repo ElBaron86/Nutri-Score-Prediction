@@ -1,3 +1,16 @@
+# Sujet du projet
+
+
+
+# Contributeurs
+
+- Brunet Alexandre (Scrum Master)
+- Ertas Elif (Product Owner)
+- Kpadondou Carlos (Data scientist)
+- Jupin Manon (Data governance)
+- Gabet Léo (Front/User Interface)
+- Otogondoua Ememag Jordhy Jean Jaurès (Data Engineer)
+
 # Modèle de Classement NutriScore pour les Aliments (Projet Académique)
 
 ![Logo](https://github.com/Alfex-1/Projet_digital/blob/main/data/nutri.jpg)
