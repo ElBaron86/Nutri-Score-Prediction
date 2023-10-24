@@ -4,8 +4,15 @@
 
 Pour rappel, le NutriScore est un système d'étiquetage nutritionnel largement adopté à l'échelle nationale, destiné à éclairer les consommateurs sur la qualité nutritionnelle des produits alimentaires transformés. Forts de cet outil, nous avons entrepris un projet académique visant à prédire, au moyen d'un modèle statistique, le NutriScore d'un ou de plusieurs produits en fonction de leurs caractéristiques nutritionnelles. Cette initiative a pour vocation d'assister les consommateurs dans leurs choix alimentaires en favorisant des options plus saines et mieux éclairées.
 
-L'équipe derrière ce projet est constituée d'étudiants du programme de Master 2 en Sciences de l'Économie et de la Prévention (SEP) de l'Université de Reims Champagne Ardenne, promotion 2023/2024. Notre démarche s'inscrit dans le souhait de développer une application à l'attention de toute personne désireuse de bénéficier d'une information claire et rapide sur la qualité nutritionnelle d'un produit alimentaire.
+L'équipe derrière ce projet est constituée d'étudiants de Master 2 de Statistique pour l'évaluation et la Prévention (SEP) de l'Université de Reims Champagne Ardenne, promotion 2023/2024. Notre démarche s'inscrit dans le souhait de développer une application à l'attention de toute personne désireuse de bénéficier d'une information claire et rapide sur la qualité nutritionnelle d'un produit alimentaire.
 
+# Structure et méthode choisie
+
+Notre application fonctionne grâce aux logiciels VBA et Python :
+- VBA sert à afficher une formulaire qui sera affiché pour que l'utilisateur puisse entrer les informations nutritionnelles d'un produit de son choix
+- Python sert à entraîner un modèle de régression logistique ordinale à partir d'une base de données recensant de très nombreux produits (avec leurs informations nutritionnelles et leur nutri-score).
+- VBA enverra les informations sur Python qui retournera les résultats sur un tableau de bord Excel qui montera à la fois les différentes probabilités associées à chaque nutri-score, en plus et à al fois une jauge qui montre clairement quel nutri-score a le plus de chance de correspondre aux informations rentrées par l'utilisateur.
+- L'opération peut se dérouler autant de fois que l'utilisateur le souhaite. Excel gardera une trace d etoutes ses saisies dans une feuille.
 
 # Contributeurs
 
