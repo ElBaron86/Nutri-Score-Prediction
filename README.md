@@ -9,21 +9,23 @@ L'équipe derrière ce projet est constituée d'étudiants de Master 2 de Statis
 # Structure et méthode choisie
 
 Notre application fonctionne grâce aux logiciels VBA et Python :
-- VBA sert à afficher une formulaire qui sera affiché pour que l'utilisateur puisse entrer les informations nutritionnelles d'un produit de son choix
-- Python sert à entraîner un modèle de régression logistique ordinale à partir d'une base de données recensant de très nombreux produits (avec leurs informations nutritionnelles et leur nutri-score).
-- VBA enverra les informations sur Python qui retournera les résultats sur un tableau de bord Excel qui montera à la fois les différentes probabilités associées à chaque nutri-score, et de plus une jauge qui montre clairement quel nutri-score a le plus de chance de correspondre aux informations rentrées par l'utilisateur.
+
+- VBA sert à afficher une formulaire qui sera affiché pour que l'utilisateur puisse entrer les informations nutritionnelles d'un produit de son choix.
+
+- Python entraîne un modèle de régression logistique ordinale à partir d'une base de données recensant de très nombreux produits (avec leurs informations nutritionnelles et leur nutri-score). A partir de toutes les valeurs nutritionnelles que nous possédons, nous allons effectuer une sélection des variables. Cette démarche a deux objectifs distincts. Tout d'abord, nous visons à améliorer l'expérience de l'utilisateur. Cela se traduit par la réduction du nombre d'informations à saisir, ce qui, en fin de compte, améliore la convivialité de l'application. Moins de données à entrer signifie une utilisation plus fluide pour l'utilisateur. Deuxièmement, nous nous efforçons d'optimiser les performances du modèle. Nous cherchons à minimiser l'erreur de classification globale du modèle tout en réduisant la complexité en ne conservant que les variables nutritionnelles les plus informatives. En d'autres termes, nous souhaitons maintenir une précision élevée malgré la réduction du nombre de variables nutritionnelles prises en compte.
+
+- VBA transmettra les informations à Python, qui renverra les résultats sous forme d'un tableau de bord Excel. Ce tableau de bord affichera à la fois les différentes probabilités associées à chaque nutri-score et une jauge indiquant clairement quel nutri-score correspond le mieux aux informations saisies par l'utilisateur.
+
 - L'opération peut se dérouler autant de fois que l'utilisateur le souhaite. Excel gardera une trace de toutes ses saisies dans une feuille (historique).
 
 # Contributeurs
 
-- Brunet Alexandre (Scrum Master)
-- Ertas Elif (Product Owner)
-- Kpadondou Carlos (Data scientist)
-- Jupin Manon (Data governance)
-- Gabet Léo (Front/User Interface)
-- Jaurès Ememaga (Data Engineer)
-
-
+- Brunet Alexandre (Scrum Master) ;
+- Ertas Elif (Product Owner) ;
+- Kpadondou Carlos (Data Scientist) ;
+- Jupin Manon (Data Governance) ;
+- Gabet Léo (Front/User Interface) ;
+- Jaurès Ememaga (Data Engineer).
 
 
 ## Prérequis
