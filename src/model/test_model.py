@@ -47,4 +47,3 @@ if __name__ == "__main__":
     # Prédictions
     input_values = args.input_values
     probas = score_probas(model_ordinal, input_values)
-
