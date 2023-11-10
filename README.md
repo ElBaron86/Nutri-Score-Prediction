@@ -33,13 +33,8 @@ L'équipe derrière ce projet est constituée d'étudiants de Master 2 de Statis
 
 ## Installation
 
-1. **Clonez le dépôt GitHub sur votre machine locale:**
-
-git clone https://github.com/Alfex-1/Projet_digital.git
-
-2. **Installez les dépendances requises:**
-
-pip install -r requirements.txt
+1. **Clonez le dépôt GitHub sur votre machine locale:** git clone https://github.com/Alfex-1/Projet_digital.git
+2. **Installez les dépendances requises:** pip install -r requirements.txt
 
 ## Utilisation
 
