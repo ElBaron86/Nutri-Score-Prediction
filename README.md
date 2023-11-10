@@ -22,14 +22,15 @@ L'équipe derrière ce projet est constituée d'étudiants de Master 2 de Statis
 
 ## Structure du dépôt 
 
-- docs : les supports business présentation ainsi que le rapport écrit de notre projet
-- src -- \api : application qui permet l'envoie des informations sur le formulaire d'entrée, l'application du modèle puis le renvoie de la réponse au dashboard.
-      -- \data : dossier où on retrouve tous les fichiers .csv, en particulier la base de donnée nettoyée (data_clean.csv).
-      -- \interfaces : on retrouve tous les formulaires à chaque étape du projet au format .xlsm, ainsi que les démonstrations vidéos associées. 
-      -- \tools : on y retrouve tous les codes Python, en particulier les fonctions de sélections de variables et les modèles de prédictions.
-- tests : dans ce dossier vous y retrouverez tous les tests unitaires effectués sur les fonctions présentent dans le fichier tools.
-- README.md : le présent message que vous lisez actuellement 
-- requirement.txt : dans ce fichier on y retrouve la liste de tous les packages/modules nécessaires à l'éxecution des codes Python du projet.
+### docs : les supports business présentation ainsi que le rapport écrit de notre projet
+### src 
+#### \api : application qui permet l'envoie des informations sur le formulaire d'entrée, l'application du modèle puis le renvoie de la réponse au dashboard.
+#### \data : dossier où on retrouve tous les fichiers .csv, en particulier la base de donnée nettoyée (data_clean.csv).
+#### \interfaces : on retrouve tous les formulaires à chaque étape du projet au format .xlsm, ainsi que les démonstrations vidéos associées. 
+#### \tools : on y retrouve tous les codes Python, en particulier les fonctions de sélections de variables et les modèles de prédictions.
+### tests : dans ce dossier vous y retrouverez tous les tests unitaires effectués sur les fonctions présentent dans le fichier tools.
+### README.md : le présent message que vous lisez actuellement 
+### requirement.txt : dans ce fichier on y retrouve la liste de tous les packages/modules nécessaires à l'éxecution des codes Python du projet.
 
 ## Installation
 
