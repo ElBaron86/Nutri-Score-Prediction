@@ -1,3 +1,18 @@
+import importlib
+
+# Modules nécessaires
+required_modules = ['numpy', 'pandas', 'scikit-learn', 'statsmodels', 'matplotlib', 'unittest']
+
+# Vérification et installation des modules manquants
+for module in required_modules:
+    try:
+        importlib.import_module(module)
+    except ImportError:
+        print(f"Le module {module} n'est pas installé. Installation en cours...")
+        !pip install {module}
+        print(f"Le module {module} a été installé avec succès.")
+
+
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
