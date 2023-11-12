@@ -41,8 +41,8 @@ def read_file(path : str) -> pd.DataFrame:
 class TestReadFile(unittest.TestCase):
     def test_read_csv_file(self):
         path_file = "../data/data_clean.csv"
-        donnees_csv = read_file(path_file)
-        self.assertIsInstance(donnees_csv, pd.DataFrame, "La lecture du fichier CSV a échoué.")
+        df_csv = read_file(path_file)
+        self.assertIsInstance(df_csv, pd.DataFrame, "Reading the CSV file has failed.")
 
 # Perform the test
 if __name__ == '__main__':
