@@ -22,7 +22,8 @@ L'équipe derrière ce projet est constituée d'étudiants de Master 2 de Statis
 
 ## Structure du dépôt 
 
-- __docs__ : les supports business présentation ainsi que le rapport écrit de notre projet       
+- __docs__ : les supports business présentation ainsi que le rapport écrit de notre projet.
+    - \demos : les vidéos de démonstration à chaque étape de notre projet.      
 - __src__         
     - \api : application qui permet l'envoie des informations sur le formulaire d'entrée, l'application du modèle puis le renvoie de la réponse au dashboard.     
     - \data : dossier où on retrouve tous les fichiers .csv, en particulier la base de donnée nettoyée (data_clean.csv).        
