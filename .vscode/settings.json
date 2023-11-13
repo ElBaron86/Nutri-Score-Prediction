@@ -1,4 +1,5 @@
 {
     "commentTranslate.source": "Google",
-    "commentTranslate.multiLineMerge": false
+    "commentTranslate.multiLineMerge": false,
+    "docwriter.style": "Auto-detect"
 }
