@@ -27,7 +27,7 @@ L'équipe derrière ce projet est constituée d'étudiants de Master 2 de Statis
 - __src__         
     - \api : application qui permet l'envoie des informations sur le formulaire d'entrée, l'application du modèle puis le renvoie de la réponse au dashboard.     
     - \data : dossier où on retrouve tous les fichiers .csv, en particulier la base de donnée nettoyée (data_clean.csv).        
-    - \interfaces : on retrouve tous les formulaires à chaque étape du projet au format .xlsm, ainsi que les démonstrations vidéos associées.            
+    - \interfaces : on retrouve tous les formulaires à chaque étape du projet au format .xlsm.        
     - \tools : on y retrouve tous les codes Python, en particulier les fonctions de sélections de variables et les modèles de prédictions.       
 - __tests__ : dans ce dossier vous y retrouverez tous les tests unitaires effectués sur les fonctions présentent dans le fichier tools.       
 - __README.md__ : le présent message que vous lisez actuellement         
