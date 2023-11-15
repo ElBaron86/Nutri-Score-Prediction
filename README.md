@@ -25,13 +25,13 @@ L'équipe derrière ce projet est constituée d'étudiants de Master 2 de Statis
 - __docs__ : les supports business présentation ainsi que le rapport écrit de notre projet.
     - \demos : les vidéos de démonstration à chaque étape de notre projet.      
 - __src__         
-    - \api : application qui permet l'envoie des informations sur le formulaire d'entrée, l'application du modèle puis le renvoie de la réponse au dashboard.     
+    - \api : application qui permet l'envoi des informations sur le formulaire d'entrée, les prédictions par le modèle puis le renvoi de la réponse au dashboard.     
     - \data : dossier où on retrouve tous les fichiers .csv, en particulier la base de donnée nettoyée (data_clean.csv).        
     - \interfaces : on retrouve le fichier au format .xlsm de l'application, regroupant le formulaire d'entrée ainsi que le tableau de bord de réponse.        
     - \tools : on y retrouve tous les codes Python, en particulier les fonctions de sélections de variables et les modèles de prédictions.       
-- __tests__ : dans ce dossier vous y retrouverez tous les tests unitaires effectués sur les fonctions présentent dans le fichier tools.       
+- __tests__ : dans ce dossier vous retrouverez tous les tests unitaires effectués sur les fonctions présentent dans le dossier tools.       
 - __README.md__ : le présent message que vous lisez actuellement         
-- __requirement.txt__ : dans ce fichier on y retrouve la liste de tous les packages/modules nécessaires à l'éxecution des codes Python du projet.        
+- __requirement.txt__ : dans ce fichier on y retrouve la liste de tous les modules nécessaires à l'éxecution des codes Python du projet.        
 
 ## Installation
 
