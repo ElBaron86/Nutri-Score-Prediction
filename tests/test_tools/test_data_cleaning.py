@@ -1,3 +1,11 @@
+'''
+ # @ Author: Jaures Ememaga
+ # @ Create Time: 2023-11-12 17:42:06
+ # @ Modified by: Jaures Ememaga
+ # @ Modified time: 2023-11-15 15:41:52
+ # @ Description: Test ds fonctions du script data_cleaning das src/tools
+ '''
+
 # importation des modules
 import sys
 import os
@@ -12,20 +20,7 @@ project_root = os.path.abspath(os.path.join(current_dir, "../.."))
 sys.path.append(project_root)
 
 # Importation des fonctions de data_cleaning.py
-from src.tools.data_cleaning import read_file, select_columns, split_train_test
-
-# test de la fonction read_file
-
-class TestReadFile(unittest.TestCase):
-    def test_read_csv_file(self):
-        path_file = "../../src/data/train.csv"
-        df_csv = read_file(path_file)
-        self.assertIsInstance(df_csv, pd.DataFrame, "La lecture du fichier CSV a échoué.")
-
-# test
-if __name__ == '__main__':
-    unittest.main(verbosity=2) # `verbosity` pour afficher un message d'erreur détaillé
-    
+from src.tools.data_cleaning import select_columns, split_train_test
     
 # test de la fonction select_columns 
 

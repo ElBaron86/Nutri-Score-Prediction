@@ -1,7 +1,10 @@
-"""Ce script rassemble l'ensemble des fonctions utilisees pour le traitement des données. 
- Ces fonctions serviront a lire, nettoyer et selectionner les variables dont nous aurons besoin pour mener a
- bien le projet. 
-"""
+'''
+ # @ Author: Jaures Ememaga
+ # @ Create Time: 2023-11-12 18:22:40
+ # @ Modified by: Jaures Ememaga
+ # @ Modified time: 2023-11-15 15:43:06
+ # @ Description: Ce script rassemble l'ensemble des fonctions utilisees pour le traitement des données.
+ '''
 
 import pandas as pd
 import numpy as np
@@ -9,30 +12,6 @@ from sklearn.model_selection import train_test_split
 import unittest
 import os
 from typing import List, Tuple
-
-
-# Fonction pour charger un fichier csv
-
-def read_file(path : str) -> pd.DataFrame:
-    """
-    This function takes the way to a CSV or Excel file as a starter and returns a pandas dataframe.
-    
-    Parameters:
-        path (str): The path to the CSV or Excel file.
-        
-    Returns:
-        pd.DataFrame: A dataframe pandas containing the data from the file.
-    """
-    # Check the file extension to determine the format
-    if path.endswith('.csv'):
-        # Read a CSV file
-        df = pd.read_csv(path)
-    else:
-        # If the extension is not CSV, displays an error message
-        raise ValueError("File format not supported. Use a CSV file.")
-    
-    return df
-
 
 # Selection des colonnes utiles pour le calcul du Nutri-Score #
 
