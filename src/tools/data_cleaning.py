@@ -1,7 +1,10 @@
-"""Ce script rassemble l'ensemble des fonctions utilisees pour le traitement des données. 
- Ces fonctions serviront a lire, nettoyer et selectionner les variables dont nous aurons besoin pour mener a
- bien le projet. 
-"""
+'''
+ # @ Author: Jaures Ememaga
+ # @ Create Time: 2023-11-12 18:22:40
+ # @ Modified by: Jaures Ememaga
+ # @ Modified time: 2023-11-15 15:43:06
+ # @ Description: Ce script rassemble l'ensemble des fonctions utilisees pour le traitement des données.
+ '''
 
 import pandas as pd
 import numpy as np
