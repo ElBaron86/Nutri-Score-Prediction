@@ -25,15 +25,15 @@ plt.style.use('cyberpunk')
 
 
 # Chargement des ensembles de données d'entraînement (train.csv) et de test (test.csv)
-#train = pd.read_csv("src/data/train.csv")
-#test = pd.read_csv("src/data/test.csv")
+train = pd.read_csv("src/data/train.csv")
+test = pd.read_csv("src/data/test.csv")
 
 # Conversion des catégories en ordinales
-#score_type = CategoricalDtype(categories=['E', 'D', 'C', 'B', 'A'], ordered=True)
-#train['score']=train['score'].astype(score_type)
+score_type = CategoricalDtype(categories=['E', 'D', 'C', 'B', 'A'], ordered=True)
+train['score']=train['score'].astype(score_type)
 
-#X_train = train.drop('score', axis=1)
-#y_train = train['score']
+X_train = train.drop('score', axis=1)
+y_train = train['score']
 
 
 import pandas as pd
@@ -65,7 +65,7 @@ def scale_data(data : pd.DataFrame, scaler_path: str = 'src/tools/scaler.pkl') -
     transformed_data = pd.DataFrame(scaler.transform(data), columns=data.columns)
     return transformed_data
 
-#X_train_scaled = scale_data(X_train)
+X_train_scaled = scale_data(X_train)
 
 # modèle initial
 #ordinal_base_model = OrderedModel(y_train,
@@ -96,7 +96,7 @@ def cross_validation_selection(X_train: pd.DataFrame, y_train : pd.Series, k: in
     models = []
 
     # Définition de la validation croisée à k plis
-    cv = KFold(n_splits=k)
+    cv = KFold(n_splits=k, shuffle=True, random_state=42)
 
     # Boucle pour effectuer la validation croisée
     for i, (train_idx, valid_idx) in enumerate(cv.split(X_train)):
@@ -135,18 +135,56 @@ def cross_validation_selection(X_train: pd.DataFrame, y_train : pd.Series, k: in
             pickle.dump(best_model, file)
 
     
-    # Afficher la courbe des performances si plot_results est True
     if plot_results:
-        plt.figure(figsize = (6, 6))
-        plt.plot(range(1, k+1), np.array(performance_per_split), marker='o', label ="MSE")
-        plt.axvline(x=best_model_index + 1, color='green', linestyle='--', label='Meilleur modèle')
-        plt.xlabel('Split')
-        plt.ylabel('MES')
-        plt.title("Evolution de l'erreur (mse) par split de la validation croisée")
-        plt.legend()
+        fig, axes = plt.subplots(nrows=2, ncols=1, figsize=(10, 10))
+        
+        # Plot 1: Evolution de l'erreur
+        axes[0].plot(range(1, k+1), np.array(performance_per_split), marker='o', label="MSE")
+        axes[0].axvline(x=best_model_index + 1, color='green', linestyle='--', label='Meilleur modèle')
+        axes[0].set_xlabel('Split')
+        axes[0].set_ylabel('MES')
+        axes[0].set_title("Evolution de l'erreur (mse) par split de la validation croisée")
+        axes[0].legend()
         mplcyberpunk.make_lines_glow()
+
+        # Recuperatiojn de la liste des variables utilisees
+        feature_names = X_train.columns
+        # Recuperation des coefficients pour attribuer l'importance des variables
+        feature_importances = np.abs(best_model.params[:len(feature_names)])
+        # Tri par importance des coefficients
+        sorted_idx = np.argsort(feature_importances)
+        
+        # Dictionnaire pour traduire les variables en français
+        var_dict = {
+            "energy_100g": "Energie",
+            "fat_100g": "Matieres grasses",
+            "saturated-fat_100g": "Graisses saturees",
+            "trans-fat_100g": "Graisses trans",
+            "cholesterol_100g": "Cholesterol",
+            "carbohydrates_100g": "Glucides",
+            "sugars_100g": "Sucres",
+            "fiber_100g": "Fibres",
+            "proteins_100g": "Proteines",
+            "salt_100g": "Sel",
+            "sodium_100g": "Sodium",
+            "vitamin-a_100g": "Vitamine A",
+            "vitamin-c_100g": "Vitamine C",
+            "calcium_100g": "Calcium",
+            "iron_100g": "Fer"
+        }
+        
+        # Liste des variables triees dans l'odre d'importance dans les meilleur modele
+        sorted_features = [feature_names[sorted_idx]]
+        
+        # Plot 2: Diagramme à barres pour les variables par importance dans le meilleur modèle
+        axes[1].barh(range(len(sorted_idx)), feature_importances[sorted_idx])
+        axes[1].set_yticks(range(len(sorted_idx)))
+        axes[1].set_yticklabels([var_dict[i] for i in sorted_features[0]]) # Utilisation de sorted_features[0] pour obtenir la liste des noms de variables
+        axes[1].set_xlabel('Importance')
+        axes[1].set_title('Importance des variables dans le meilleur modèle')
+
+        plt.tight_layout()
         plt.show()
-    
     return best_model, performance_per_split
 
-#cross_validation_selection(X_tain=X_train_scaled, y_train=y_train, k=12, plot_results = True, save_path = 'src/tools/base_ordinal_model.pkl')
+cross_validation_selection(X_train=X_train_scaled, y_train=y_train, k=12, plot_results = True)
