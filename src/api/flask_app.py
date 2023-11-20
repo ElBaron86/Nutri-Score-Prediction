@@ -2,7 +2,7 @@
 import numpy as np
 import pickle
 from flask import Flask, request, jsonify
-import mord
+from sklearn.ensemble import RandomForestClassifier
 
 
 app = Flask(__name__)
@@ -12,46 +12,56 @@ app = Flask(__name__)
 
 def prediction():
     try:
-        with open("modele_ordinal.pkl","rb") as file :
-            model=pickle.load(file)
+        with open("..\\tools\\random_forest_conso.pickle","rb") as file :
+            model_conso=pickle.load(file)
+            
+        with open("..\\tools\\random_forest_prod.pickle","rb") as file :
+            model_prod=pickle.load(file)
 
         data = request.json
 
 
-        Energie = data.get('Energie')
-        Mat_gras = data.get('Mat_gras')
-        Mat_gras_sat = data.get('Mat_gras_sat')
-        #Une variable à definir
-        transf=0
-        Choles = data.get('Choles')
-        Sucre = data.get('Sucre')
-        carb = data.get('carb')
-        Fibre = data.get('Fibre')
-        Sel = data.get('Sel')
-        Vita_C = data.get('Vita_C')
-        Cal = data.get('Cal')
-        Fer = data.get('Fer')
+        energy = data.get('Energie')
+        fat = data.get('Mat_gras')
+        saturated_fat = data.get('Mat_gras_sat')
+        trans_fat=data.get('trans_fat')
+        cholesterol = data.get('Choles')
+        carbohydrates = data.get('carb')
+        sugars = data.get('Sucre')
+        proteins= data.get('prot')
+        salt= data.get('Sel')
+        fiber = data.get('Fibre')
+        sodium= data.get('Fibre')
+        vita_A= data.get('Fibre')
+        vita_C = data.get('Vita_C')
+        cal = data.get('Cal')
+        iron = data.get('Fer')
 
-        df=np.array([Energie,Mat_gras,Mat_gras_sat,transf,Choles,Sucre,carb,Fibre,Sel,Vita_C,Cal,Fer])
+        # liste des variables selon le modèle
+        var_conso=[energy,fat,saturated_fat,carbohydrates,sugars,proteins,salt]
+        var_prod=[energy,fat,saturated_fat,trans_fat,cholesterol,carbohydrates,sugars,fiber,sodium,vita_A,
+                  vita_C,cal,iron]
 
- # Effectue une prédiction en utilisant le modèle et les données reçues.
+        # Condition pour sélectionner le modèle
+        if data.get('conso') == 1:
+            df=np.array(var_conso).reshape(1,7)
+            model=model_conso
+        else:
+            df=np.array(var_prod).reshape(1,13)
+            model=model_prod
+        # Effectue une prédiction en utilisant le modèle et les données reçues.
 
         if all(x is not None for x in df):
-            reponse=model.predict(df)
-            if reponse[0] == 0:
-                resultat = "E"
-            elif reponse[0] == 1:
-                resultat = "D"
-            elif reponse[0] == 2:
-                resultat = "C"
-            elif reponse[0] == 3:
-                resultat = "B"
-            else:
-                resultat = "A"
+            result=model.predict_proba(df)
+            prob_E=result[0][0]
+            prob_D=result[0][1]
+            prob_C=result[0][2]
+            prob_B=result[0][3]
+            prob_A=result[0][4]
 
-  # Mappe la sortie de la prédiction à une valeur de lettre.
+  # Construire le json de sortie.
 
-            return jsonify({"predicted_value": resultat})
+            return jsonify({"prob_E": prob_E,"prob_D": prob_D,"prob_C": prob_C,"prob_B": prob_B,"prob_A": prob_A})
         else:
             return jsonify({"error": "Missing data in the request"}), 400
     except Exception as e:
