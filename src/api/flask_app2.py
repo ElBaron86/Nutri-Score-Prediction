@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 def prediction():
     try:
-        with open("../model/modele_ordinal.pkl","rb") as file :
+        with open("../tools/radom_forest_conso.pickle","rb") as file :
             model=pickle.load(file)
 
         data = request.json
@@ -21,18 +21,12 @@ def prediction():
         Energie = data.get('Energie')
         Mat_gras = data.get('Mat_gras')
         Mat_gras_sat = data.get('Mat_gras_sat')
-        #Une variable à definir
-        transf=0
-        Choles = data.get('Choles')
-        Sucre = data.get('Sucre')
-        carb = data.get('carb')
-        Fibre = data.get('Fibre')
+        prot = data.get('prot')
+        sucre = data.get('sucre')
+        glu = data.get('glu')
         Sel = data.get('Sel')
-        Vita_C = data.get('Vita_C')
-        Cal = data.get('Cal')
-        Fer = data.get('Fer')
 
-        df=np.array([Energie,Mat_gras,Mat_gras_sat,transf,Choles,Sucre,carb,Fibre,Sel,Vita_C,Cal,Fer])
+        df=np.array([Energie,Mat_gras,Mat_gras_sat,prot,sucre,glu,Sel])
 
  # Effectue une prédiction en utilisant le modèle et les données reçues.
 
