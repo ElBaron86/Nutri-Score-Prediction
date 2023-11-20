@@ -6,19 +6,11 @@ Pour rappel, le Nutri-Score est un système d'étiquetage nutritionnel largement
 
 L'équipe derrière ce projet est constituée d'étudiants de Master 2 de Statistique pour l'évaluation et la Prévention (SEP) de l'Université de Reims Champagne Ardenne, promotion 2023/2024. Notre démarche s'inscrit dans le souhait de développer une application à l'attention de toute personne désireuse de bénéficier d'une information claire et rapide sur la qualité nutritionnelle d'un produit alimentaire.
 
-# Contributeurs
-
-- Brunet Alexandre (Scrum Master) ;
-- Ertas Elif (Product Owner) ;
-- Kpadondou Carlos (Data Scientist) ;
-- Jupin Manon (Data Governance) ;
-- Gabet Léo (Front/User Interface) ;
-- Jaurès Ememaga (Data Engineer).
-
 ## Prérequis
 
 1. Assurez-vous d'avoir Python installé sur votre système. Vous pouvez télécharger Python depuis [python.org](https://www.python.org/).
-2. Disposer d'une connexion internet (afin de faire appel à l'API)
+2. Disposer d'une connexion internet (afin de faire appel à l'API).
+3. Avoir Excel sur sa machine.
 
 ## Structure du dépôt 
 
@@ -36,9 +28,18 @@ L'équipe derrière ce projet est constituée d'étudiants de Master 2 de Statis
 ## Installation
 
 1. **Clonez le dépôt GitHub sur votre machine locale:** git clone https://github.com/Alfex-1/Projet_digital.git
-2. **Installez les dépendances requises:** pip install -r requirements.txt
+2. **Installez les dépendances requises:** pip install -r requirements.txt : `tqdm` `pandas` `mplcyberpunk` `scikit-learn` `mord`
 
 ## Utilisation
 
 Pour utiliser l'application afin d'estimer le nutri-score d'un aliment, il vous suffit d'ouvrir le fichier ~\src\interfaces\V3_formulaire.xlsm 
 Afin de n'avoir aucun conflit, il faut que vous autorisiez les fichiers munis de macros, pour cela pour faite clique droit sur le fichier concerné, vous allez dans propriétés, puis tout en bas de l'onglet Général vous cochez la case "Débloquer".
+
+# Contributeurs
+
+- Brunet Alexandre (Scrum Master) ;
+- Ertas Elif (Product Owner) ;
+- Kpadondou Carlos (Data Scientist) ;
+- Jupin Manon (Data Governance) ;
+- Gabet Léo (Front/User Interface) ;
+- Jaurès Ememaga (Data Engineer).
