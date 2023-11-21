@@ -12,7 +12,7 @@ L'équipe derrière ce projet est constituée d'étudiants de Master 2 de Statis
 2. Disposer d'une connexion internet (afin de faire appel à l'API).
 3. Avoir Excel sur sa machine.
 
-/!\ Disposé d'un environnement Windows /!\
+/!\ Disposer d'un environnement Windows /!\
 
 ## Structure du dépôt 
 
