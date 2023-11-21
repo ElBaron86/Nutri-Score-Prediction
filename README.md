@@ -8,9 +8,11 @@ L'équipe derrière ce projet est constituée d'étudiants de Master 2 de Statis
 
 ## Prérequis
 
-1. Assurez-vous d'avoir Python installé sur votre système. Vous pouvez télécharger Python depuis [python.org](https://www.python.org/).
+1. Assurez-vous d'avoir Python installé sur votre machine. Vous pouvez télécharger Python depuis [python.org](https://www.python.org/).
 2. Disposer d'une connexion internet (afin de faire appel à l'API).
 3. Avoir Excel sur sa machine.
+
+/!\ Disposer d'un environnement Windows /!\
 
 ## Structure du dépôt 
 
