@@ -28,37 +28,6 @@ from sklearn.model_selection import RandomizedSearchCV, train_test_split
 import mplcyberpunk
 plt.style.use('cyberpunk')
 
-#### Importation des bases ####
-
-train, test = pd.read_csv(r'..\data\train.csv'), pd.read_csv(r'..\data\test.csv')
-
-# Numerisation des scores
-train['score'] = train['score'].map({"E":0, "D":1, "C":2, "B":3, "A":4})
-test['score'] = test['score'].map({"E":0, "D":1, "C":2, "B":3, "A":4})
-
-# Choix sur le modele a construire 
-
-choice = input("Construire le modele 'Producteurs' ( Entrez P ) ou construire le modele 'Consommateurs' ( Entrez C )")
-if choice.lower() == 'p':
-    X_train, X_test = train.drop(labels=['score'], axis=1), test.drop(labels=['score'], axis=1)
-    
-elif choice.lower() == 'c':
-    X_train, X_test = train[['energy_100g',
-                                'fat_100g',
-                                'saturated-fat_100g',
-                                'carbohydrates_100g',
-                                'sugars_100g',  'proteins_100g',
-                                'salt_100g']], test[['energy_100g',
-                                'fat_100g',
-                                'saturated-fat_100g',
-                                'carbohydrates_100g',
-                                'sugars_100g',  'proteins_100g',
-                                'salt_100g']]
-                                
-else :
-    print("Saisie incorrecte, veuillez saisir P ou C")
-    
-y_train, y_test = train['score'], test['score']
 
 
 #### Fonction pour la recherche d'hyperparametres ####
@@ -109,9 +78,7 @@ def hyper_params_search(X_train : pd.DataFrame, y_train : pd.Series, n_cross_val
     print('Meilleurs hyperparametres:',  rand_search.best_params_)
     return best_rf
 
-# On propose un premier modele optimal avec toutes les variables de base selon le profil producteur ou consommateur
 
-best_rf = hyper_params_search(X_train=X_train, y_train=y_train)
 
 #### Fonction pour faire des prediction et afficher des performances detaillees au test ####
 
@@ -154,7 +121,7 @@ def make_prediction(model, X_test : pd.DataFrame, y_test : pd.Series, plot_conf_
 
 #### Recherche de modele optimal avec reduction de variables (backward_selection) et recherche d'hyperparametres #### 
 
-def hyper_params_search_with_feature_elimination(X_train, y_train, X_test, y_test, actual_model : RandomForestClassifier = best_rf,
+def hyper_params_search_with_feature_elimination(X_train, y_train, X_test, y_test, actual_model : RandomForestClassifier,
                                                 n_cross_val=5, n_iter=30, 
                                                 n_estimators_min=20, n_estimators_max=300, 
                                                 max_depth_min=1, max_depth_max=20) -> Tuple[RandomForestClassifier, List[str]]:
@@ -239,8 +206,45 @@ def hyper_params_search_with_feature_elimination(X_train, y_train, X_test, y_tes
     
     return best_model, best_features
 
+#### Importation des bases ####
+
+train, test = pd.read_csv(r'..\data\train.csv'), pd.read_csv(r'..\data\test.csv')
+
+# Numerisation des scores
+train['score'] = train['score'].map({"E":0, "D":1, "C":2, "B":3, "A":4})
+test['score'] = test['score'].map({"E":0, "D":1, "C":2, "B":3, "A":4})
+
+# Choix sur le modele a construire 
+
+choice = input("Construire le modele 'Producteurs' ( Entrez P ) ou construire le modele 'Consommateurs' ( Entrez C )")
+if choice.lower() == 'p':
+    X_train, X_test = train.drop(labels=['score'], axis=1), test.drop(labels=['score'], axis=1)
+    
+elif choice.lower() == 'c':
+    X_train, X_test = train[['energy_100g',
+                                'fat_100g',
+                                'saturated-fat_100g',
+                                'carbohydrates_100g',
+                                'sugars_100g',  'proteins_100g',
+                                'salt_100g']], test[['energy_100g',
+                                'fat_100g',
+                                'saturated-fat_100g',
+                                'carbohydrates_100g',
+                                'sugars_100g',  'proteins_100g',
+                                'salt_100g']]
+                                
+else :
+    print("Saisie incorrecte, veuillez saisir P ou C")
+    
+y_train, y_test = train['score'], test['score']
+
+
+# On propose un premier modele optimal avec toutes les variables de base selon le profil producteur ou consommateur
+
+best_rf = hyper_params_search(X_train=X_train, y_train=y_train, n_iter = 30)
+
 # On lance la recherche d'un modele optimal
-king_model, best_features = hyper_params_search_with_feature_elimination(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, 
+king_model, best_features = hyper_params_search_with_feature_elimination(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, actual_model = best_rf, 
                                                                         n_cross_val=5, n_iter=30, 
                                                                         n_estimators_min=15, n_estimators_max=300,
                                                                         max_depth_min=1, max_depth_max=20)
