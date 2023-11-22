@@ -30,17 +30,23 @@ L'équipe derrière ce projet est constituée d'étudiants de Master 2 de Statis
 ## Installation
 
 1. **Clonez le dépôt GitHub sur votre machine locale:** git clone https://github.com/Alfex-1/Projet_digital.git
-2. **Installez les dépendances requises:** pip install -r requirements.txt
+2. **Installez les dépendances requises:**
+```bash
+pip install -r requirements.txt
+```
 
 ## Utilisation
 
 Deux modèles RandomForest sont déjà entrainés et à disposition au format pickle (`random_forest_prod.pickle` et `random_forest_conso.pickle`) dans le répertoire `src\tools`. L'un est à disposition des consommateurs () et l'autre à l'attention des producteurs.
 
-Si vous voulez Générer un nouveau modèle, il vous suffit de lancer le scipt `make_random_forest.py` disponible dans ce même répertoire. Il vous permettra de créer un nouveau modèle RandomForest cosommateur ou producteur. Avant de l'exécuter, assurez vous d'être dans le répertoire `src\tools`.  
+Si vous voulez Générer un nouveau modèle, il vous suffit de lancer dans un terminal le script `make_random_forest.py` disponible dans ce même répertoire. Il vous permettra de créer un nouveau modèle RandomForest cosommateur ou producteur. Avant de l'exécuter, assurez vous d'être dans le répertoire `src\tools`.  
 
-**Exécutez le script:** python make_random_forest.py  
+**Exécutez le script:** 
+```bash
+python make_random_forest.py  
+```
 Faites un choix entre P pour construire le modèle producteur et C pour le modèle consommateur.  
-Une fois le modèle construit, il vous sera demandé si vous souhaitez enregistrer le modèle produit (O/N).
+Une fois le modèle construit, il vous sera demandé si vous souhaitez enregistrer le modèle produit (O/N). L'exécution complète du script prend 45 minutes environ.
 
 Pour utiliser l'application afin d'estimer le nutri-score d'un aliment, il vous suffit d'ouvrir le fichier `~\src\interfaces\V3_formulaire.xlsm`.  
 Afin de n'avoir aucun conflit, il faut que vous autorisiez les fichiers munis de macros, pour cela pour faite clique droit sur le fichier concerné, vous allez dans **propriétés**, puis tout en bas de l'onglet **Général** vous cochez la case **Débloquer**.

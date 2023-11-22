@@ -30,7 +30,7 @@ plt.style.use('cyberpunk')
 
 #### Importation des bases ####
 
-train, test = pd.read_csv(r'src\data\train.csv'), pd.read_csv(r'src\data\test.csv')
+train, test = pd.read_csv(r'..\data\train.csv'), pd.read_csv(r'..\data\test.csv')
 
 # Numerisation des scores
 train['score'] = train['score'].map({"E":0, "D":1, "C":2, "B":3, "A":4})
