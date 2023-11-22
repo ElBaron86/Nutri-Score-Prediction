@@ -43,11 +43,11 @@ def prediction():
                   vita_C,cal,iron]
 
         # Condition pour sélectionner le modèle
-        if data.get('conso') == 1:
-            df=np.array(var_conso).reshape(1,7)
+        if data.get('C') == 1:
+            df=np.array(var_conso,dtype='float64').reshape(1,7)
             model=model_conso
         else:
-            df=np.array(var_prod).reshape(1,13)
+            df=np.array(var_prod,dtype='float64').reshape(1,13)
             model=model_prod
         # Effectue une prédiction en utilisant le modèle et les données reçues.
 
@@ -59,7 +59,7 @@ def prediction():
             prob_B=result[0][3]
             prob_A=result[0][4]
 
-  # Construire le json de sortie.
+            # Construire le json de sortie.
 
             return jsonify({"prob_E": prob_E,"prob_D": prob_D,"prob_C": prob_C,"prob_B": prob_B,"prob_A": prob_A})
         else:
