@@ -2,4 +2,3 @@ tqdm
 pandas
 mplcyberpunk
 scikit-learn
-mord
