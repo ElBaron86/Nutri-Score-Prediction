@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/test/', methods=['POST'])
 def prediction():
     try:
-        # Charger les modèles depuis les fichiers pickle (décommenter si nécessaire)
+        # Charger les modèles depuis les fichiers pickle 
         with open("mysite/random_forest_conso.pickle", "rb") as file:
             model_conso = pickle.load(file)
         with open("mysite/random_forest_prod.pickle", "rb") as file:
@@ -49,10 +49,10 @@ def prediction():
 
         # Effectuer une prédiction en utilisant le modèle et les données reçues.
         if all(x is not None for x in df):
-            # Faites votre prédiction ici (décommenter et ajuster si nécessaire)
+            # Prédire des probabilités et les stockés
             result = model.predict_proba(df)
             prob_E, prob_D, prob_C, prob_B, prob_A = result[0]
-            # Construire le JSON de sortie (ajuster en fonction de la logique de sortie souhaitée)
+            # Construire le JSON de sortie 
             return jsonify({"prob_E": prob_E, "prob_D": prob_D, "prob_C": prob_C, "prob_B": prob_B, "prob_A": prob_A})
         else:
             return jsonify({"error": "Missing data in the request"}), 400
