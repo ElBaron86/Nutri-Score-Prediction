@@ -43,7 +43,7 @@ Si vous voulez Générer un nouveau modèle, il vous suffit de lancer dans un te
 
 **Exécutez le script:** 
 ```bash
-python make_random_forest.py  
+python main_random_forest.py  
 ```
 Faites un choix entre P pour construire le modèle producteur et C pour le modèle consommateur.  
 Une fois le modèle construit, il vous sera demandé si vous souhaitez enregistrer le modèle produit (O/N). L'exécution complète du script prend 45 minutes environ.
