@@ -58,4 +58,4 @@ Afin de n'avoir aucun conflit, il faut que vous autorisiez les fichiers munis de
 - Kpadondou Carlos (Data Scientist) ;
 - Jupin Manon (Data Governance) ;
 - Gabet Léo (Front/User Interface) ;
-- Jaurès Ememaga (Data Engineer).
+- Otogondoua Ememaga Jordhy Jean Jaurès (Data Engineer).
