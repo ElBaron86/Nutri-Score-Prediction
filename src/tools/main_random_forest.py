@@ -1,3 +1,11 @@
+'''
+ # @ Author: Jaurès Ememaga
+ # @ Create Time: 2023-11-23 08:25:37
+ # @ Modified by: 
+ # @ Modified time: 
+ # @ Description: Ce script permet de lancer la construction des modeles random forest producteur ou consommateur
+ '''
+
 import sys
 import os
 # récupération du répertoire actuel

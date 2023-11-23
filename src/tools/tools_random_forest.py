@@ -2,18 +2,9 @@
  # @ Author: Jaures Ememaga
  # @ Create Time: 2023-11-22 18:11:59
  # @ Modified by: Jaures Ememaga
- # @ Modified time: 2023-11-22 18:12:05
+ # @ Modified time: 2023-11-23 08:50:10
  # @ Description: Ce script rassemble toutes les fonctionnalites pour construire des modeles randomforest consommateur et producteur
  '''
-
-import sys
-import os
-# récupération du répertoire actuel
-current_dir = os.path.dirname(os.path.abspath(__file__))
-
-# retour au répertoire du projet 
-project_root = os.path.abspath(os.path.join(current_dir, "../.."))
-sys.path.append(project_root)
 
 #### Importations ####
 
