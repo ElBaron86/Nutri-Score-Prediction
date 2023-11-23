@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/test/', methods=['POST'])
 def prediction():
-   """
+    """
     Args:
       requête (json): Elle doit être de cette forme("{""Energie"": 377,""Mat_gras"": 1.3,
       ""Mat_gras_sat"": 1.0,""trans_fat"": 0.007,""Choles"": 0.004,""carb"": 18.0,
@@ -20,8 +20,6 @@ def prediction():
       reponse(json) Elle est de la forme ({"prob_E": prob_E, "prob_D": prob_D, "prob_C": prob_C, "prob_B": prob_B, "prob_A": prob_A})
       la somme de toutes les probabilités est égale à 1
     """
-    
-    
     try:
         # Charger les modèles depuis les fichiers pickle 
         with open("mysite/random_forest_conso.pickle", "rb") as file:
