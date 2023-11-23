@@ -2,15 +2,15 @@
 
 ![Logo](https://github.com/Alfex-1/Projet_digital/blob/main/docs/nutri.jpg)
 
-Pour rappel, le Nutri-Score est un système d'étiquetage nutritionnel largement adopté à l'échelle nationale, destiné à éclairer les consommateurs sur la qualité nutritionnelle des produits alimentaires transformés. Forts de cet outil, nous avons entrepris un projet académique visant à prédire, au moyen d'un modèle statistique, le nutri-score d'un produits en fonction de ses caractéristiques nutritionnelles. Cette initiative a pour vocation d'assister les consommateurs dans leurs choix alimentaires en favorisant des options plus saines et mieux éclairées.
+Le Nutri-Score est un système d'étiquetage nutritionnel largement adopté à l'échelle nationale, destiné à éclairer les consommateurs sur la qualité nutritionnelle des produits alimentaires transformés. Forts de cet outil, nous avons entrepris un projet académique visant à prédire, au moyen d'un modèle statistique, le nutri-score d'un produits en fonction de ses caractéristiques nutritionnelles. Cette initiative a pour vocation d'assister les consommateurs dans leurs choix alimentaires en favorisant des options plus saines et mieux éclairées.
 
 L'équipe derrière ce projet est constituée d'étudiants de Master 2 de Statistique pour l'évaluation et la Prévention (SEP) de l'Université de Reims Champagne Ardenne, promotion 2023/2024. Notre démarche s'inscrit dans le souhait de développer une application à l'attention de toute personne désireuse de bénéficier d'une information claire et rapide sur la qualité nutritionnelle d'un produit alimentaire.
 
 ## Prérequis
 
-1. Assurez-vous d'avoir Python installé sur votre machine. Vous pouvez télécharger Python depuis [python.org](https://www.python.org/).
+1. Assurez-vous d'avoir Python (version 3.9 à 3.10) installé sur votre machine. Vous pouvez télécharger Python depuis [python.org](https://www.python.org/).
 2. Disposer d'une connexion internet (afin de faire appel à l'API).
-3. Avoir Excel sur sa machine.
+3. Avoir Excel sur votre machine.
 
 /!\ Disposer d'un environnement Windows /!\
 
@@ -30,12 +30,26 @@ L'équipe derrière ce projet est constituée d'étudiants de Master 2 de Statis
 ## Installation
 
 1. **Clonez le dépôt GitHub sur votre machine locale:** git clone https://github.com/Alfex-1/Projet_digital.git
-2. **Installez les dépendances requises:** pip install -r requirements.txt : `tqdm` `pandas` `mplcyberpunk` `scikit-learn` `mord`
+2. **Installez les dépendances requises:**
+```bash
+pip install -r requirements.txt
+```
 
 ## Utilisation
 
-Pour utiliser l'application afin d'estimer le nutri-score d'un aliment, il vous suffit d'ouvrir le fichier ~\src\interfaces\V3_formulaire.xlsm 
-Afin de n'avoir aucun conflit, il faut que vous autorisiez les fichiers munis de macros, pour cela pour faite clique droit sur le fichier concerné, vous allez dans propriétés, puis tout en bas de l'onglet Général vous cochez la case "Débloquer".
+Deux modèles RandomForest sont déjà entrainés et à disposition au format pickle (`random_forest_prod.pickle` et `random_forest_conso.pickle`) dans le répertoire `src\tools`. L'un est à disposition des consommateurs () et l'autre à l'attention des producteurs.
+
+Si vous voulez Générer un nouveau modèle, il vous suffit de lancer dans un terminal le script `make_random_forest.py` disponible dans ce même répertoire. Il vous permettra de créer un nouveau modèle RandomForest cosommateur ou producteur. Avant de l'exécuter, assurez vous d'être dans le répertoire `src\tools`.  
+
+**Exécutez le script:** 
+```bash
+python main_random_forest.py  
+```
+Faites un choix entre P pour construire le modèle producteur et C pour le modèle consommateur.  
+Une fois le modèle construit, il vous sera demandé si vous souhaitez enregistrer le modèle produit (O/N). L'exécution complète du script prend 45 minutes environ.
+
+Pour utiliser l'application afin d'estimer le nutri-score d'un aliment, il vous suffit d'ouvrir le fichier `~\src\interfaces\V3_formulaire.xlsm`.  
+Afin de n'avoir aucun conflit, il faut que vous autorisiez les fichiers munis de macros, pour cela pour faite clique droit sur le fichier concerné, vous allez dans **propriétés**, puis tout en bas de l'onglet **Général** vous cochez la case **Débloquer**.
 
 # Contributeurs
 
@@ -44,4 +58,4 @@ Afin de n'avoir aucun conflit, il faut que vous autorisiez les fichiers munis de
 - Kpadondou Carlos (Data Scientist) ;
 - Jupin Manon (Data Governance) ;
 - Gabet Léo (Front/User Interface) ;
-- Jaurès Ememaga (Data Engineer).
+- Otogondoua Ememaga Jordhy Jean Jaurès (Data Engineer).

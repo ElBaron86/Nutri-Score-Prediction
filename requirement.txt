@@ -1,5 +1,7 @@
 tqdm
 pandas
+numpy
+statsmodels
 mplcyberpunk
 scikit-learn
-mord
+flask
