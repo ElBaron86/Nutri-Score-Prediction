@@ -1,28 +1,28 @@
 '''
- # @ Author: Jaurès Ememaga
+ # @ Author: Jaures Ememaga
  # @ Create Time: 2023-11-23 08:25:37
  # @ Modified by: 
  # @ Modified time: 
- # @ Description: Ce script permet de lancer la construction des modeles random forest producteur ou consommateur
+ # @ Description: This script allows you to launch the construction of Random Forest producer or consumer models
  '''
 
 import sys
 import os
-# récupération du répertoire actuel
+# Recovery of the current directory
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-# retour au répertoire du projet 
+# Back to the project directory 
 project_root = os.path.abspath(os.path.join(current_dir, "../.."))
 sys.path.append(project_root)
 
-#### Importations ####
+#### Imports ####
 
-# bibliothèque standard
+# standard library
 import time
 from typing import (List, Tuple)
 import pickle
 
-# Importations de bibliothèques tierces
+# Imports of third -party libraries
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -37,10 +37,10 @@ from sklearn.model_selection import RandomizedSearchCV, train_test_split
 import mplcyberpunk
 plt.style.use('cyberpunk')
 
-# Importation des fonctions de make_random_forest
+# Importing the functions of Make_random_Forest
 from src.tools.tools_random_forest import hyper_params_search, make_prediction, hyper_params_search_with_feature_elimination
 
-#### Importation des bases ####
+#### Data ####
 
 train, test = pd.read_csv(r'src\data\train.csv'), pd.read_csv(r'src\data\test.csv')
 
@@ -48,9 +48,9 @@ train, test = pd.read_csv(r'src\data\train.csv'), pd.read_csv(r'src\data\test.cs
 train['score'] = train['score'].map({"E":0, "D":1, "C":2, "B":3, "A":4})
 test['score'] = test['score'].map({"E":0, "D":1, "C":2, "B":3, "A":4})
 
-# Choix sur le modele a construire 
+# Choice on the model to build 
 
-choice = input("Construire le modele 'Producteurs' ( Entrez P ) ou construire le modele 'Consommateurs' ( Entrez C )")
+choice = input("Build the 'Producers' model (enter P) or build the 'Consumers' model (enter C)")
 if choice.lower() == 'p':
     X_train, X_test = train.drop(labels=['score'], axis=1), test.drop(labels=['score'], axis=1)
     
@@ -68,45 +68,45 @@ elif choice.lower() == 'c':
                                 'salt_100g']]
                                 
 else :
-    print("Saisie incorrecte, veuillez saisir P ou C")
+    print("Incorrect entry, please enter P or C")
     
 y_train, y_test = train['score'], test['score']
 
 
-# On propose un premier modele optimal avec toutes les variables de base selon le profil producteur ou consommateur
+# We offer a first optimal model with all basic variables according to the producer or consumer profile
 
 best_rf = hyper_params_search(X_train=X_train, y_train=y_train, n_iter = 30)
 
-# On lance la recherche d'un modele optimal
+# We are launching the search for an optimal model
 king_model, best_features = hyper_params_search_with_feature_elimination(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, actual_model = best_rf, 
                                                                         n_cross_val=5, n_iter=30, 
                                                                         n_estimators_min=15, n_estimators_max=300,
                                                                         max_depth_min=1, max_depth_max=20)
 
         
-save_choice = input("Voulez-vous sauvegarder le modèle entraîné ? (O/N)")
-if save_choice.lower() == 'o':
+save_choice = input("Do you want to save the trained model? (Y/N)")
+if save_choice.lower() == 'y':
     if choice.lower() == 'p':
-        # Enregistrement du modèle (cas producteurs) optimal dans un pickle
+        # Model recording (producer case) optimal in a pickle
         with open('random_forest_prod.pickle', 'wb') as content:
             pickle.dump(king_model, content)
-        # Enregistrement de la liste des variables utilisées pour le modèle optimal    
+        # Recording of the list of variables used for the optimal model    
         with open('features_random_forest_prod.txt', 'w') as l:
             for line in best_features:
                 l.write(f"{line}\n")
                 
-        print("#### Modèle producteur enregistré avec succès ! ####")
+        print("#### Producer model successfully saved ! ####")
     else:
-        # Enregistrement du modèle (cas consommateurs) optimal dans un pickle
+        # Optimal model (consumer case) model in a pickle
         with open('random_forest_conso.pickle', 'wb') as content:
             pickle.dump(king_model, content)
-        # Enregistrement de la liste des variables utilisées pour le modèle optimal
+        # Recording of the list of variables used for the optimal model
         with open('features_random_forest_conso.txt', 'w') as l:
             for line in best_features:
                 l.write(f"{line}\n")
                 
-        print("#### Modèle consommateur enregistré avec succès ! ####")
+        print("#### Consumer model successfully saved ! ####")
 
         
-print("#### Programme Termine ####")
+print("#### Program completed ####")
 

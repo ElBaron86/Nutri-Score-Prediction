@@ -3,17 +3,17 @@
  # @ Create Time: 2023-11-22 18:11:59
  # @ Modified by: Jaures Ememaga
  # @ Modified time: 2023-11-23 08:50:10
- # @ Description: Ce script rassemble toutes les fonctionnalites pour construire des modeles randomforest consommateur et producteur
+ # @ Description: This script brings together all functionalities to build Randomforest consumer and producer models
  '''
 
 #### Importations ####
 
-# bibliothèque standard
+# standard library
 import time
 from typing import (List, Tuple)
 import pickle
 
-# Importations de bibliothèques tierces
+# Imports of third -party libraries
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -30,157 +30,157 @@ plt.style.use('cyberpunk')
 
 
 
-#### Fonction pour la recherche d'hyperparametres ####
+#### Function for the search for hyperparameters ####
 
 def hyper_params_search(X_train : pd.DataFrame, y_train : pd.Series, n_cross_val : int = 5, n_iter : int = 30, n_estimators_min : int = 20,
                         n_estimators_max : int = 300, max_depth_min : int = 1, max_depth_ax : int = 20) -> RandomForestClassifier: 
                         
-    """La fonction `hyper_params_search` effectue une recherche d'hyperparametres pour un classificateur RandomForest.
+    """The 'hyper_params_Search' function is looking for hyperparameters for a Randomforest classifier.
     
     Args:
-        X_train (pd.DataFrame) : Variables explicatives d'entrainement.
-        y_train (pd.Series) : Labels d'entrainement.
-        n_cross_val (int): Nombre de divisions des donnees dans la validation croisee. Par defaut 5
-        n_iter (int): Nombre d'iterations du processus de recherche de parametres = nombre de combinaisons d'hyperparametres qui vont être testees.
-        Plus ce nombre est grand plus le processus prendra du temps, donc attention au nombre fixe. Par defaut 30
-        n_estimators_min (int): Nombre minimum d'arbres dans l'intervalle de recherche. Par defaut 20.
-        n_estimators_max (int): Nombre maximum d'arbres dans l'intervalle de recherche. Par defaut 300.
-        max_depth_min (int): Nombre minimum des niveaux (profondeur) des arbres dans l'intervalle de recherche. Par defaut 1.
-        max_depth_max (int): Nombre maximum des niveaux (profondeur) des arbres dans l'intervalle de recherche. Par defaut 20.
+        X_train (pd.DataFrame) : Explanatory training variables.
+        y_train (pd.Series) : Training labels.
+        n_cross_val (int): Number of data divisions in the crossed validation. D 5efault
+        n_iter (int): Number of iterations of the parameter search process = number of combinations of hyperparameters that will be tested.
+        The greater this number, the more time will take time, so pay attention to the fixed number. Default 30
+        n_estimators_min (int): Minimum number of trees in the research interval. Default 20.
+        n_estimators_max (int): Maximum number of trees in the research interval. Default 300.
+        max_depth_min (int): Minimum number of levels (depth) of trees in the research interval. Default 1.
+        max_depth_max (int): Maximum number of levels (depth) of trees in the search interval. Default 20.
         
     Returns:
-        best_rf (RandomForestClassifier): Meilleur modele obtenu
+        best_rf (RandomForestClassifier): Best model obtained
     """
     time_start = time.time()
     
-    print("#### Recherche d'hyper parametres en cours... ####")
+    print("#### Search for hyper parameters in progress... ####")
     print()
     
-    # Dictionnaire avec les distributions des valeurs d'hyperparametres a chercher
+    # Dictionary with the distributions of hyperparameter values to seek
     param_dist = {'n_estimators': randint(n_estimators_min, n_estimators_max),
               'max_depth': randint(max_depth_min, max_depth_ax)}
     
     rf = RandomForestClassifier()
 
-    # Recherche aleatoire des hyperparametres
+    # Hyperparameters randomness
     rand_search = RandomizedSearchCV(rf, 
                                     param_distributions = param_dist, 
                                     n_iter=n_iter, 
                                     cv=n_cross_val)
 
-    # Ajustement du modele aux donnees
+    # Model adjustment to data
     rand_search.fit(X_train, y_train)
-    best_rf = rand_search.best_estimator_ # ici le meilleur model est celui ayant obtenu un meilleure precision moyenne sur l'ensemble des splits de la cross validation
+    best_rf = rand_search.best_estimator_ # Here the best model is that which has obtained a better average precision on all the Splits of the Cross Validation
     
     time_end = time.time()
-    print(f"Temps d'execution : {time_end-time_start} secondes")
+    print(f"Execution time : {time_end-time_start} secondes")
     print()
-    print('Meilleurs hyperparametres:',  rand_search.best_params_)
+    print('Best hyperparameters:',  rand_search.best_params_)
     return best_rf
 
 
 
-#### Fonction pour faire des prediction et afficher des performances detaillees au test ####
+#### Function for predicting and displaying detailed performance in the test ####
 
 def make_prediction(model, X_test : pd.DataFrame, y_test : pd.Series, plot_conf_mat : bool = False) -> np.array:
-    """Fonction pour faire des predictions avec un modele de random frorest.
+    """Function to make predictions with a Random Frorest model.
 
     Args:
-        model : Modele a utiliser pour la prediction
-        X_test (pd.): Variables explicatives de test
-        y_test (pd.Series) : labels des donnees de test
-        plot_conf_mat (bool, optional): Afficher la matrice de confusion au format heatmap.
+        model :Model to use for prediction
+        X_test (pd.):Explanatory test variables
+        y_test (pd.Series) : test labels
+        plot_conf_mat (bool, optional): Show the confusion matrix in Heatmap format.
 
     Returns:
-        y_pred (np.array) : Matrice contenant les classes predites par model
+        y_pred (np.array) : Matrix containing the predicted classes by Model
     """
     
-    # Faire une prediction
+    # Prediction
     y_pred = model.predict(X_test)
     
-    # Prendre la precision
+    # Accuracy
     accuracy = accuracy_score(y_test, y_pred)
     
-    print(f"Precision globale : {accuracy}")
+    print(f"Accuracy : {accuracy}")
     print()
-    print(classification_report(y_test, y_pred)) # permet d'avoir des informations plus completes sur la prediction effectuee
+    print(classification_report(y_test, y_pred)) # Allows to have more complete information on the prediction carried out
     
     if plot_conf_mat:
-        # Affichage de la matrice de confusion au format heatmap
+        # Display of the confusion matrix in Heatmap format
         cm = confusion_matrix(y_test, y_pred)
         labels = ['E', 'D', 'C', 'B', 'A']
         
         plt.figure(figsize=(8, 6))
         sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=labels, yticklabels=labels)
-        plt.title('Matrice de Confusion')
-        plt.xlabel('Valeurs Predites')
-        plt.ylabel('Valeurs Reelles')
+        plt.title('Confusion matrix')
+        plt.xlabel('Predicted labels')
+        plt.ylabel('True labels')
         plt.show()
     return y_pred
 
 
-#### Recherche de modele optimal avec reduction de variables (backward_selection) et recherche d'hyperparametres #### 
+#### Optimal model search with variable reduction (backward_selection) and hyperparameters search #### 
 
 def hyper_params_search_with_feature_elimination(X_train, y_train, X_test, y_test, actual_model : RandomForestClassifier,
                                                 n_cross_val=5, n_iter=30, 
                                                 n_estimators_min=20, n_estimators_max=300, 
                                                 max_depth_min=1, max_depth_max=20) -> Tuple[RandomForestClassifier, List[str]]:
     
-    """Fonction pour faire une selectioun de modeles en enlevant progressivement les variables avec la plus faible importance.
+    """Function to make a selection of models by gradually removing the variables with the lowest importance.
     
     Args:
-        X_train (pd.DataFrame): Variables explicatives de train.
-        y_train (pd.Series): Labels de train.
-        X_test (pd.DataFrame): Variables explicatives de test.
-        y_test (pd.Series): Labels de test.
-        actual_model (RandomForestClassifier): Meilleur modèle actuel
-        n_cross_val (int): Nombre de splits a fairte dans la validation croisee.
-        n_iter (int): Nombre d'iterations du processus de recherche de parametres = nombre de combinaisons d'hyperparametres qui vont être testees.
-        n_estimators_min (int): Nombre minimum d'arbres dans l'intervalle de recherche. Par defaut 20.
-        n_estimators_max (int): Nombre maximum d'arbres dans l'intervalle de recherche. Par defaut 300.
-        max_depth_min (int): Nombre minimum des niveaux (profondeur) des arbres dans l'intervalle de recherche. Par defaut 1.
-        max_depth_max (int): Nombre maximum des niveaux (profondeur) des arbres dans l'intervalle de recherche. Par defaut 20.
+        X_train (pd.DataFrame): Train explanatory variables.
+        y_train (pd.Series): Train labels.
+        X_test (pd.DataFrame): Explanatory test variables.
+        y_test (pd.Series): Test labels.
+        actual_model (RandomForestClassifier): Best current model
+        n_cross_val (int): Number of Splits to do in the crossed validation.
+        n_iter (int): Number of iterations of the parameter search process = number of combinations of hyperparameters that will be tested.
+        n_estimators_min (int): Minimum number of trees in the research interval. Default 20.
+        n_estimators_max (int): Maximum number of trees in the research interval. Default 300.
+        max_depth_min (int): Minimum number of levels (depth) of trees in the research interval. Default 1.
+        max_depth_max (int): Maximum number of levels (depth) of trees in the search interval. Default 20.
         
     Returns:
-        Tuple[RandomForestClassifier, List[str]]: Meilleur modele obtenu et liste des variables importantes
+        Tuple[RandomForestClassifier, List[str]]: Best model obtained and list of important variables
     """
     time_start = time.time()
     
     current_X_train = X_train.copy()
     current_X_test = X_test.copy()
     
-    # Initialiser le meilleur modele avec le modele entraine que vous avez deja
+    # Initialize the best model with the model leads to you
     best_model = actual_model
     
-    # Initialiosation des variables pour les iterations
-    best_accuracy = accuracy_score(y_test, best_model.predict(current_X_test)) # meilleure precision connue au depart(celle de precedent best_rf)
-    evolution_accuracy = [best_accuracy] # liste des accuracy
-    removed_features = [] # liste qui va contenir les variables retirees
-    best_features = list(current_X_train.columns) # liste des meilleures variables (actuellement celles du meilleur model connu)
+    # Initialiosation of variables for iterations
+    best_accuracy = accuracy_score(y_test, best_model.predict(current_X_test)) # Best precise accuracy at the start (that of preceding best_rf)
+    evolution_accuracy = [best_accuracy] # accuracy list
+    removed_features = [] # List that will contain the variables withdrawn
+    best_features = list(current_X_train.columns) # List of the best variables (currently those of the best known model)
     
-    print("#### Recherche de modele optimal par reduction de variables + recherche d'hyper parametres en cours... ####")
+    print("#### Optimal model search by reduction of variables + search for hyper parameters in progress... ####")
     print()
     while current_X_train.shape[1] > 2:
-        feature_importances = best_model.feature_importances_ # on recupere les importances des variables du meilleur modele
-        weakest_feature_index = np.argmin(feature_importances) # on repere celle avec la plus faible importance pour la retirer
+        feature_importances = best_model.feature_importances_ # We recover the importance of the variables of the best model
+        weakest_feature_index = np.argmin(feature_importances) # we repeat the one with the lowest importance to remove it
         
         if weakest_feature_index < current_X_train.shape[1]:
-            removed_feature = current_X_train.columns[weakest_feature_index] # on retire la variables la moins importante
+            removed_feature = current_X_train.columns[weakest_feature_index] # The least important variables are removed
             
-            print(f"Variable retiree : {removed_feature}")
+            print(f"Removed feature : {removed_feature}")
             
-            current_X_train = current_X_train.drop(removed_feature, axis=1) # maj des variables en retirant la moins importante
-            current_X_test = current_X_test.drop(removed_feature, axis=1) # maj aussi sur les donnees de test
+            current_X_train = current_X_train.drop(removed_feature, axis=1) # variable update by removing the least important
+            current_X_test = current_X_test.drop(removed_feature, axis=1) # Also on test data
             
-            # On cree un nouveau modele avec les meilleures caracteristiques et on l'entraine sur le train maj
+            # We create a new model with the best characteristics and we train it
             new_best_model = hyper_params_search(current_X_train, y_train, n_cross_val, n_iter, 
                                                  n_estimators_min, n_estimators_max, 
                                                  max_depth_min, max_depth_max)
             new_best_model.fit(current_X_train, y_train)
             
-            new_accuracy = accuracy_score(y_test, new_best_model.predict(current_X_test)) # on recupere sa precision
+            new_accuracy = accuracy_score(y_test, new_best_model.predict(current_X_test)) 
             
-            # Mettre a jour le meilleur modele et les meilleures caracteristiques si seulement la precision est meilleure
+            # Update the best model and the best characteristics if only the precision is better
             if new_accuracy > best_accuracy:
                 best_model = new_best_model
                 best_accuracy = new_accuracy
@@ -189,19 +189,19 @@ def hyper_params_search_with_feature_elimination(X_train, y_train, X_test, y_tes
             evolution_accuracy.append(new_accuracy)
             removed_features.append(removed_feature)
         else:
-            print("Erreur: weakest_feature_index est hors des limites.") # au cas ou on pourrait retirer plus de var que prevu on stoppe
+            print("Error: weakest_feature_index is out of the limits.") # in case we could withdraw more than var
             break
     
     time_end = time.time()
-    print(f"Temps d'execution : {time_end - time_start} seconds")
-    print('Meilleurs hyperparametres :', best_model.get_params())
+    print(f"Execution time : {time_end - time_start} seconds")
+    print('Best hyperparameters :', best_model.get_params())
     print()
     
     plt.plot(range(1, len(evolution_accuracy) + 1), evolution_accuracy, marker='o')
     for i, txt in enumerate(removed_features):
         plt.annotate(txt, (i + 1, evolution_accuracy[i]), textcoords="offset points", xytext=(0, 10), ha='center', rotation=45, color='red')
-    plt.xlabel('Nombre de variables retirees')
-    plt.ylabel('Precision')
+    plt.xlabel('Number of variables withdrawn')
+    plt.ylabel('Accuracy')
     plt.show()
     
     return best_model, best_features
