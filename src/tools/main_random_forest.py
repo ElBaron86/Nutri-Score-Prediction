@@ -49,12 +49,12 @@ else:
 y_train, y_test = train['score'], test['score']
 
 # We offer a first optimal model with all basic variables according to the producer or consumer profile
-best_rf = hyper_params_search(X_train=X_train, y_train=y_train, n_iter=2)
+best_rf = hyper_params_search(X_train=X_train, y_train=y_train, n_iter=30)
 
 # We are launching the search for an optimal model
 king_model, best_features = hyper_params_search_with_feature_elimination(X_train=X_train, y_train=y_train, X_test=X_test,
                                                                         y_test=y_test, actual_model=best_rf, 
-                                                                        n_cross_val=5, n_iter=2, 
+                                                                        n_cross_val=5, n_iter=30, 
                                                                         n_estimators_min=15, n_estimators_max=300,
                                                                         max_depth_min=1, max_depth_max=20)
 
