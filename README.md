@@ -58,4 +58,4 @@ Afin de n'avoir aucun conflit, il faut que vous autorisiez les fichiers munis de
 - Kpadondou Carlos **`@Data1User`** (Data Scientist) ;
 - Jupin Manon **`@ManJup1`** (Data Governance) ;
 - Gabet Léo **`@Meetic08`** (Front/User Interface) ;
-- Jaurès Ememaga **`@ElBaron86`** (Data Engineer).
+- Ememaga Jaurès **`@ElBaron86`** (Data Engineer).
