@@ -214,3 +214,53 @@ def hyper_params_search_with_feature_elimination(X_train, y_train, X_test, y_tes
     
     return best_model, best_features
 
+def avg_error(num_iterations, test_size_):
+    """Function to visualize the average error of a Random Forest model based on training data, across a specified number of iterations. 
+
+    Args:
+    num_iterations : Number of iterations.
+    test_size_ : Test set proportion.
+
+    Returns:
+        plot_avg_errors : matplotlib.figure.Figure : The Matplotlib Figure object containing the error evolution curve.
+    """
+
+    # List to store errors
+    error_scores = []
+
+    # Number of occurrences per label in each sample (train and test) to balance the labels
+    occurrences_per_label = min(np.bincount(y))
+
+    # Loop over iterations
+    for i in tqdm(range(num_iterations)):
+        # Shuffle data to create a new train and test set in each iteration
+        X_train, X_test, y_train, y_test = train_test_split(
+            X, y, test_size=test_size_, random_state=i, stratify=y)
+
+        # Balance the number of occurrences per label in the train sets only (X_train and y_train)
+        X_train_balanced, _, y_train_balanced, _ = train_test_split(
+            X_train, y_train, train_size=occurrences_per_label * len(np.unique(y_train)), random_state=i, stratify=y_train)
+
+        # Train the model on the new train set
+        model = RandomForestClassifier(n_estimators=N, max_depth=M)
+        model.fit(X_train_balanced, y_train_balanced)
+
+        # Predictions on the new test set
+        y_pred = model.predict(X_test)
+
+        # Calculate the error and add it to the error_scores list
+        error = 1 - accuracy_score(y_test, y_pred)
+        error_scores.append(error * 100)
+
+    # Calculate the average error over iterations
+    average_error = np.mean(error_scores)
+
+    # Plot the error evolution curve
+    plot_avg_errors = plt.figure()
+    plt.plot(range(1, num_iterations + 1), error_scores, marker='o')
+    plt.axhline(y=average_error, color='r', linestyle='--', label=f'Average: {average_error:.4f}')
+    plt.xlabel('Iterations')
+    plt.ylabel('Error')
+    plt.show()
+
+    return plot_avg_errors
