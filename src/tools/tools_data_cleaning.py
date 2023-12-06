@@ -32,13 +32,16 @@ def clean_data(data: pd.DataFrame) -> pd.DataFrame:
     filtered_data.dropna(inplace=True)
     filtered_data.rename(columns={"nutrition_grade_fr": "score"}, inplace=True)
 
-    # Find the number of samples in the least represented class
+        # Find the number of samples in the least represented class
     min_samples = filtered_data['score'].value_counts().min()
 
     # Random undersampling for each class
     balanced_data = filtered_data.groupby('score', group_keys=False).apply(lambda x: resample(x, n_samples=min_samples, random_state=42))
-    
+
+    # dropping duplicated 
+    balanced_data.drop_duplicates(inplace=True)
+
     # separate data in train and test, we drop the product names
     train_data, test_data = train_test_split(balanced_data.drop(labels='product_name', axis=1), test_size=0.3, random_state=42)
-  
+
     return balanced_data, train_data, test_data

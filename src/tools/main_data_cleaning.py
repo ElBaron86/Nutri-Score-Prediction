@@ -27,6 +27,7 @@ data_base = pd.read_csv(r"..\data\data.csv")
 # clean the data and get train ant test data
 data_clean, train, test = clean_data(data=data_base)
 
+# saving outputs
 data_clean.to_csv(r"..\data\data_clean.csv")
 train.to_csv(r"..\data\train.csv")
 test.to_csv(r"..\data\test.csv")
