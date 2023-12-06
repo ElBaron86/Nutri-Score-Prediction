@@ -38,7 +38,7 @@ def clean_data(data: pd.DataFrame) -> pd.DataFrame:
     # Random undersampling for each class
     balanced_data = filtered_data.groupby('score', group_keys=False).apply(lambda x: resample(x, n_samples=min_samples, random_state=42))
 
-    # dropping duplicated 
+    # dropping duplicated
     balanced_data.drop_duplicates(inplace=True)
 
     # separate data in train and test, we drop the product names
