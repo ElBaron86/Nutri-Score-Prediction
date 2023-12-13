@@ -48,12 +48,12 @@ else:
 y_train, y_test = train['score'], test['score']
 
 # We offer a first optimal model with all basic variables according to the producer or consumer profile
-best_rf = hyper_params_search(x_train=x_train, y_train=y_train, n_iter=2)
+best_rf = hyper_params_search(x_train=x_train, y_train=y_train, n_iter=30)
 
 # We are launching the search for an optimal model
 king_model, best_features = hyper_params_search_with_feature_elimination(x_train=x_train, y_train=y_train, x_test=x_test,
                                                                         y_test=y_test, actual_model=best_rf,
-                                                                        n_iter=2
+                                                                        n_iter=30
                                                                         )
 
 # choose if you want to save the trained model. This will replace the previous version
