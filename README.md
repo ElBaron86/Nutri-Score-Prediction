@@ -6,14 +6,21 @@ Le Nutri-Score est un système d'étiquetage nutritionnel largement adopté à l
 
 L'équipe derrière ce projet est constituée d'étudiants de Master 2 de Statistique pour l'Evaluation et la Prévision (SEP) de l'Université de Reims Champagne Ardenne, promotion 2023/2024. Notre démarche s'inscrit dans le souhait de développer une application à l'attention de toute personne désireuse de bénéficier d'une information claire et rapide sur la qualité nutritionnelle d'un produit alimentaire.
 
+
 ## Prérequis
+Les conditions préalables pour exploiter efficacement ce projet varient selon l'utilisation que vous comptez en faire. Voici les recommandations spécifiques :
 
-1. Assurez-vous d'avoir Python (version 3.9 ou +) installé sur votre machine. Vous pouvez télécharger Python depuis [python.org](https://www.python.org/).
-2. Disposer d'une connexion internet (afin de faire appel à l'API).
-3. Avoir Excel sur votre machine.
+### Utilisation de l'Interface de Calcul du Nutri-Score :
 
-/!\ Disposer d'un environnement Windows /!\
+1. **Disposer d'un environnement Windows**
+2. **Connexion Internet :** Une connexion internet est indispensable pour accéder à l'API utilisée par notre interface.
+3. **Microsoft Excel :** Assurez-vous d'avoir Microsoft Excel installé sur votre machine pour pouvoir utilisé notre  interface.
 
+### Utilisation de l'Algorithme de Calcul du Nutri-Score :
+
+1. **Installation de Python :** Pour utiliser notre algorithme, veuillez installer Python dans sa version 3.9. Vous pouvez la télécharger  sur [python.org](https://www.python.org/).
+
+   
 ## Structure du dépôt 
 
 - __docs__ : Les supports business présentation ainsi que le rapport écrit de notre projet.
