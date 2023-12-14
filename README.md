@@ -55,7 +55,7 @@ python main_random_forest.py
 Faites un choix entre **P** pour construire le modèle producteur et **C** pour le modèle consommateur.  
 Une fois le modèle construit, il vous sera demandé si vous souhaitez enregistrer le modèle produit (**O**/**N**).
 
-Pour utiliser l'application afin d'estimer le nutri-score d'un aliment, il vous suffit d'ouvrir le fichier **`~\src\interfaces\V3_formulaire.xlsm`**.  
+Pour utiliser l'application afin d'estimer le nutri-score d'un aliment, il vous suffit d'ouvrir le fichier **`~\src\interface\dashboard_nutri_score.xlsm`**.  
 Afin de n'avoir aucun conflit, il faut que vous autorisiez les fichiers munis de macros, pour cela, faites **click droit** sur le fichier concerné, vous allez dans **propriétés**, puis tout en bas de l'onglet **Général** vous cochez la case **Débloquer**.
 
 # Contributeurs
