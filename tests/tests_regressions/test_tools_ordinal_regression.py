@@ -35,11 +35,15 @@ class TestOrdinalRegressionFunctions(unittest.TestCase):
         self.y_sample = pd.Series(np.random.choice(['A', 'B', 'C', 'D', 'E'], size=100), name='score')
 
     def test_calculate_aic_bic(self):
+        """Check if the function calculate_aic_bic returns the correct types faor aic and bic
+        """
         aic, bic = calculate_aic_bic(self.X_sample, self.y_sample)
         self.assertIsInstance(aic, float)
         self.assertIsInstance(bic, float)
 
     def test_fit_model(self):
+        """Check if the function fit_model returns an instance of OrderedModel
+        """
         features = ['feature1', 'feature2']
         model = fit_model(self.X_sample, self.y_sample, features)
         self.assertIsInstance(model, OrderedModel)
