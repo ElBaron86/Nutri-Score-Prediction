@@ -12,6 +12,7 @@ import unittest
 import numpy as np
 
 from sklearn.preprocessing import OrdinalEncoder
+from sklearn.linear_model import Lasso
 
 # Moving up to the "src" directory
 while os.path.basename(os.getcwd()) != "src":
