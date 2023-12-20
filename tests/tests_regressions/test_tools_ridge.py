@@ -13,13 +13,13 @@ import os
 import unittest
 import numpy as np
 
-# Move up to the "src" directory
-while os.path.basename(os.getcwd()) != "src":
+# Move up to the "Projet_digital" directory
+while os.path.basename(os.getcwd()) != "Projet_digital":
     os.chdir("..")
 sys.path.append(os.getcwd())
 
 # Importing the function to test
-from tools.regressions.ridge.tools_ridge import train_and_evaluate_ridge_model
+from src.tools.regressions.ridge.tools_ridge import train_and_evaluate_ridge_model
 
 class TestTrainAndEvaluateRidgeModel(unittest.TestCase):
 

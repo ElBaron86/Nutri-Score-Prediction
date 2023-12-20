@@ -14,13 +14,13 @@ import numpy as np
 from sklearn.preprocessing import OrdinalEncoder
 from sklearn.linear_model import Lasso
 
-# Moving up to the "src" directory
-while os.path.basename(os.getcwd()) != "src":
+# Moving up to the "Projet_digital" directory
+while os.path.basename(os.getcwd()) != "Projet_digital":
     os.chdir("..")
 sys.path.append(os.getcwd())
 
 # Importing functions from tools_ordinal_regression 
-from tools.regressions.lasso.tools_lasso import train_and_evaluate_lasso_model
+from src.tools.regressions.lasso.tools_lasso import train_and_evaluate_lasso_model
 
 class TestTrainAndEvaluateLassoModel(unittest.TestCase):
 

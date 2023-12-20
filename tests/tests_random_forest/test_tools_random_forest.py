@@ -18,11 +18,11 @@ from sklearn.datasets import make_classification
 from sklearn.ensemble import RandomForestClassifier
 
 # Move up to the "Projet_digital" directory
-while os.path.basename(os.getcwd()) != "src":
+while os.path.basename(os.getcwd()) != "Projet_digital":
     os.chdir("..")
 sys.path.append(os.getcwd())
 
-from tools.random_forest.tools_random_forest import (
+from src.tools.random_forest.tools_random_forest import (
     hyper_params_search,
     make_prediction,
     hyper_params_search_with_feature_elimination

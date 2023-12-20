@@ -18,13 +18,13 @@ from sklearn.model_selection import train_test_split
 from statsmodels.miscmodels.ordinal_model import OrderedModel
 
 
-# Moving up to the "src" directory
-while os.path.basename(os.getcwd()) != "src":
+# Moving up to the "Projet_digital" directory
+while os.path.basename(os.getcwd()) != "Projet_digital":
     os.chdir("..")
 sys.path.append(os.getcwd())
 
 # Importing functions from tools_ordinal_regression 
-from tools.regressions.ordinal.tools_ordinal_regression import calculate_aic_bic, fit_model, backward_variable_selection, cross_validation
+from src.tools.regressions.ordinal.tools_ordinal_regression import calculate_aic_bic, fit_model, backward_variable_selection, cross_validation
 
 class TestOrdinalRegressionFunctions(unittest.TestCase):
 

@@ -37,7 +37,11 @@ Les conditions préalables pour exploiter efficacement ce projet varient selon l
 
 ## Installation
 
-1. **Clonez le dépôt GitHub sur votre machine locale:** git clone https://github.com/Alfex-1/Projet_digital.git
+1. **Clonez le dépôt GitHub sur votre machine locale:** 
+```bash
+git clone https://github.com/Alfex-1/Projet_digital.git
+```
+
 2. **Installez les dépendances requises:**
 ```bash
 pip install -r requirements.txt
