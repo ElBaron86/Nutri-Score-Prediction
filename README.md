@@ -67,9 +67,9 @@ Afin de n'avoir aucun conflit, il faut que vous autorisiez les fichiers munis de
 
 # Contributeurs
 
-- Alexandre Brunet **`@Alfex-1`** (Scrum Master) ;
-- Elif Ertas **`@Elifets`** (Product Owner) ;
-- Carlos Kpadonou **`@Data1User`** (Data Scientist) ;
-- Manon Jupin **`@ManJup1`** (Data Governance/User Interface) ;
-- Léo Gabet **`@Meetic08`** (Front/User Interface) ;
-- Jaurès Ememaga **`@ElBaron86`** (Data Engineer).
+- Alexandre Brunet **`@Alfex-1`** ;
+- Elif Ertas **`@Elifets`** ;
+- Carlos Kpadonou **`@Data1User`** ;
+- Manon Jupin **`@ManJup1`** ;
+- Léo Gabet **`@Meetic08`** ;
+- Jaurès Ememaga **`@ElBaron86`**.
